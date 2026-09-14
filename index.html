@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BREAK ROOM — Alex & Archie</title>
+  <style>
+    :root { --ink:#111629; --cream:#f9e7ba; --coral:#ff6c63; --teal:#2cdbb0; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; background:#0b1020; color:var(--cream); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    body { display:grid; place-items:center; padding:20px; overflow:hidden; }
+    .shell { width:min(1200px, 100vw); }
+    header { display:flex; align-items:end; justify-content:space-between; gap:20px; margin:0 0 12px; }
+    h1 { margin:0; font-size:clamp(24px,4vw,42px); letter-spacing:.12em; color:#fff0c9; text-shadow:4px 4px 0 #6a2945; }
+    .tag { color:#77f3d0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+    .stage { position:relative; border:4px solid #352541; background:#13182a; box-shadow:0 10px 0 #080b15, 0 0 0 4px #b58a62; aspect-ratio:16/9; overflow:hidden; image-rendering:pixelated; }
+    canvas { width:100%; height:100%; display:block; image-rendering:pixelated; }
+    .hud { position:absolute; inset:14px 16px auto; display:flex; justify-content:space-between; pointer-events:none; }
+    .panel { background:rgba(11,16,32,.88); border:2px solid #bd805f; padding:8px 11px; box-shadow:3px 3px 0 #151629; font-size:12px; line-height:1.5; }
+    .panel strong { color:var(--coral); }
+    .hint { position:absolute; left:50%; bottom:14px; transform:translateX(-50%); white-space:nowrap; background:rgba(11,16,32,.9); border:2px solid #557a86; padding:7px 12px; font-size:12px; }
+    .modal { position:absolute; inset:0; display:none; place-items:center; background:rgba(4,7,16,.72); }
+    .modal.open { display:grid; }
+    .card { width:min(520px,90%); background:#151a2a; border:3px solid #e8b37a; box-shadow:8px 8px 0 #080b15; padding:22px; }
+    .card h2 { margin:0 0 8px; color:#ffcc87; letter-spacing:.08em; }
+    .card p { color:#c7d5c9; font-size:13px; line-height:1.6; }
+    .meter { height:22px; border:3px solid #0a0e1b; background:#29344a; margin:18px 0 12px; padding:2px; }
+    .meter i { display:block; height:100%; width:42%; background:linear-gradient(90deg,#53d9ae,#ffd36b,#ff7168); }
+    button { cursor:pointer; border:0; background:var(--coral); color:#1a1320; padding:10px 14px; font:inherit; font-weight:800; box-shadow:4px 4px 0 #7b304b; }
+    button:hover { transform:translate(2px,2px); box-shadow:2px 2px 0 #7b304b; }
+    footer { margin-top:12px; display:flex; justify-content:space-between; color:#7784a4; font-size:11px; }
+    @media (max-width:700px){ body{padding:10px}.hud{inset:8px}.panel{font-size:10px}.hint{font-size:10px;bottom:8px}.tag{display:none} }
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header><div><div class="tag">a tiny pixel adventure</div><h1>BREAK ROOM</h1></div><div class="tag">alex + archimedes // night shift</div></header>
+  <div class="stage"><canvas id="game" width="960" height="540" aria-label="Playable pixel art pool hall"></canvas>
+    <div class="hud"><div class="panel"><strong>PLAYER 01</strong><br>Alex <span id="score">0</span> pts</div><div class="panel" style="text-align:right"><strong>ARCHIE</strong><br><span id="status">wandering nearby</span><br><span id="controller">keyboard controls</span></div></div>
+    <div class="hint" id="hint">WASD / ARROWS to walk · SPACE near a table to play · plug in a gamepad anytime</div>
+    <div class="modal" id="modal"><div class="card"><h2>TABLE 01 // BREAK SHOT</h2><p>Set the power, then send the cue ball into the rack. Archie says: “Aim for the corner pocket.”</p><div class="meter"><i id="power"></i></div><p id="shot-copy">Press SPACE to shoot · power is moving</p><button id="close">back to the hall</button></div></div>
+  </div>
+  <footer><span>© BREAK ROOM CLUB · prototype 01</span><span>soundtrack: rain on neon</span></footer>
+</main>
+<script src="game.js"></script>
+</body></html>
