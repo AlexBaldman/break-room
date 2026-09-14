@@ -2,7 +2,7 @@
 
 A tiny playable pixel-art pool hall prototype starring Alex and Archimedes.
 
-Open `index.html` in a browser. Walk with WASD or arrow keys, or connect an Xbox/standard gamepad and use the left stick. The controller's A button opens the table and takes the shot; Space remains available on the keyboard. A dead zone keeps stick drift from moving Alex, and the HUD reports the connected controller.
+Open `index.html` in a browser. Walk with WASD or arrow keys, or connect an Xbox/standard gamepad and use the left stick. Approach the central table and press A/Space to enter the table view. In table view, aim with left/right or the stick, tune power with W/S, and shoot with A/Space; B/Escape returns to the hall. The physics simulation is fixed-step and handles ball-ball collisions, cushions, pockets, friction, spin, scratches, and practice-match state.
 
 The environment and character reference art were generated as project assets, then the game layer adds deterministic movement, collision, character silhouettes, and interaction so the hall remains playable even when art is replaced later with production sprite sheets.
 
